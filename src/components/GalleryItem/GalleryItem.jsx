@@ -1,16 +1,23 @@
 
 
 
-function HandleGalleryItem(galleryObject) {
-    console.log(galleryObject, "galleryObject")
+function HandleGalleryItem({galleryObject}) {
+
+    const fuckoff = () => {
+        console.log("galleryObject.id", galleryObject.id)
+    }
+
     return(
         <>
-        {gallery.map(galleryObject => (
-            // <img src={galleryObject.url}/>
+        
+            <div onClick={fuckoff} >
+            <img src={galleryObject.url}/>
             
             <p>{galleryObject.title}</p>
-        ))}
+            </div>
+        
         </>
+        
     )
 }
 

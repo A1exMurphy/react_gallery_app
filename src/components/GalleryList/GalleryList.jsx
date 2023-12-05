@@ -7,11 +7,12 @@ function CompileGalleryList({gallery}) {
         {gallery.map(galleryObject => (
             // <img src={galleryObject.url}/>
             
-            <p>{galleryObject.title}</p>
-        ))}
+         <HandleGalleryItem key={galleryObject.id} galleryObject={galleryObject}/>))}
+            {/* // <p>{galleryObject.title}</p>  */}
+         
         </>
     )
 }
-// <HandleGalleryItem gallery={gallery}/>
+
 
 export default CompileGalleryList
