@@ -1,17 +1,17 @@
-
+import HandleGalleryItem from "../GalleryItem/GalleryItem"
 
 function CompileGalleryList({gallery}) {
-
+    console.log(gallery, "gallery")
     return(
         <>
-        {gallery.map(image => (
-            // <img src={image.url}/>
-            <p>{image.title}</p>
-
+        {gallery.map(galleryObject => (
+            // <img src={galleryObject.url}/>
+            
+            <p>{galleryObject.title}</p>
         ))}
         </>
     )
 }
-
+// <HandleGalleryItem gallery={gallery}/>
 
 export default CompileGalleryList
