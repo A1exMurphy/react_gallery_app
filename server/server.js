@@ -9,7 +9,6 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 app.use('/gallery', gallery);
-// app.use('/gallery/like', gallery)
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT,  () => {

@@ -6,9 +6,10 @@ function HandleGalleryItem({galleryObject}) {
 
 //function to update like count in database:
     const likeImage = () => {
-        console.log("is buttoning", galleryObject.id)
-        let imageID = galleryObject.id;
+        // console.log("is buttoning", galleryObject.id)
+
         // console.log(imageID)
+        
     //PUT route to update like count
         Axios.put(`/gallery/like/${galleryObject.id}`)
         .then(response => {
