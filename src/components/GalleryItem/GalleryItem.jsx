@@ -1,18 +1,18 @@
 import { useState } from "react"
 import Axios from "axios"
-import CompileGalleryList from "../GalleryList/GalleryList"
+
 
 
 function HandleGalleryItem({galleryObject, getGalleryItems}) {
+    const[imageDisplay, setImageDisplay] = useState(true);
 
-//function to update like count in database:
-//create state in order to render uptodate like count
-
-    const [likeCount, setLikeCount] = useState(galleryObject.likes)
+    const changeDisplay = () => {
+        setImageDisplay(!imageDisplay)
+    };
 
     const likeImage = () => {
         // console.log("is buttoning", galleryObject.id)
-        setLikeCount(likeCount)
+
         // console.log(imageID)
 
     //PUT route to update like count
@@ -28,40 +28,27 @@ function HandleGalleryItem({galleryObject, getGalleryItems}) {
 
     
 
-//function to toggle on click between image and description:
-//creates a piece of state to toggle between two renders
-    const ToggleImage = () => {
-        const[imageDisplay, setImageDisplay] = useState(true);
-
-        const changeDisplay = () => {
-            setImageDisplay(!imageDisplay)
-        };
-//onClick runs function to change state to not its current boleen value
-            return(
-                <div  data-testid="galleryItem">
-                   <div  data-testid="toggle" onClick={changeDisplay} >
-                    {imageDisplay ? (
-                        <div>
-                         <img src={galleryObject.url}/>
-                         </div>
-                    ):(
-                        <div data-testid="description">
-                          {galleryObject.description}
-                        </div>
-                   )
-                    }
-                   </div>
-                </div>
-
-            )
-        }
 
     return(
-        <>
-            <ToggleImage />    
-            <p>{galleryObject.title}
-            <button data-testid="like" onClick={likeImage}>Like</button>{galleryObject.likes}</p>
-        </>
+        <div  data-testid="galleryItem">
+            <div  data-testid="toggle" onClick={changeDisplay} >
+            {imageDisplay ? (
+                <div>
+                <img src={galleryObject.url}/>
+                </div>
+            ):(
+                <div data-testid="description">
+                {galleryObject.description}
+                </div>
+            )
+            }
+            <p>{galleryObject.title}</p>
+            </div>
+            <button data-testid="like" onClick={likeImage}>Like</button>{galleryObject.likes}
+        </div>
+
+
+
         
     )
 }
