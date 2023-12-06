@@ -7,16 +7,17 @@ function HandleGalleryItem({galleryObject}) {
 //function to update like count in database:
 //create state in order to render uptodate like count
 
-    
+    const [likeCount, setLikeCount] = useState(galleryObject.likes)
+
     const likeImage = () => {
         // console.log("is buttoning", galleryObject.id)
-
+        setLikeCount(likeCount)
         // console.log(imageID)
 
     //PUT route to update like count
         Axios.put(`/gallery/like/${galleryObject.id}`)
         .then(response => {
-            console.log("likes was updated")
+            // console.log("likes was updated", response)
         })
         .catch(error => {
             console.error("likes update error", error);
