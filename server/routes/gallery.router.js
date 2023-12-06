@@ -3,7 +3,8 @@ const router = express.Router();
 const pool = require('../modules/pool.js')
 
 // PUT /gallery/like/:id
-router.put('/like/:id', (req, res) => {
+router.put(`/like/:id`, (req, res) => {
+  console.log("in PUT")
   pool.query(
     `
     UPDATE "gallery"
