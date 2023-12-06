@@ -24,7 +24,7 @@ function App() {
         })
       }
 
-      console.log(gallery, "gallery state")
+      // console.log(gallery, "gallery state")
     return (
       <div>
         <header>
@@ -34,7 +34,6 @@ function App() {
         <p>The gallery goes here!</p>
         {gallery&&
         <CompileGalleryList data-testid="galleryList" gallery={gallery}/>
-        // {/* <img src="images/goat_small.jpg"/> */}
         }
       </div>
     );
