@@ -5,11 +5,14 @@ import Axios from "axios"
 function HandleGalleryItem({galleryObject}) {
 
 //function to update like count in database:
+//create state in order to render uptodate like count
+
+    
     const likeImage = () => {
         // console.log("is buttoning", galleryObject.id)
 
         // console.log(imageID)
-        
+
     //PUT route to update like count
         Axios.put(`/gallery/like/${galleryObject.id}`)
         .then(response => {
@@ -23,20 +26,36 @@ function HandleGalleryItem({galleryObject}) {
     
 
 //function to toggle on click between image and description:
-    const toggleImage = () => {
-        // console.log("galleryObject.id", galleryObject.id)
-    }
+//creates a piece of state to toggle between two renders
+    const ToggleImage = () => {
+        const[imageDisplay, setImageDisplay] = useState(true);
+
+        const changeDisplay = () => {
+            setImageDisplay(!imageDisplay)
+        };
+//onClick runs function to change state to not its current boleen value
+            return(
+                   <div  data-testid="toggle" onClick={changeDisplay} >
+                    {imageDisplay ? (
+                        <div>
+                         <img data-testid="galleryItem" src={galleryObject.url}/>
+                         </div>
+                    ):(
+                        <div>
+                          {galleryObject.description}
+                        </div>
+                    )
+                    }
+                   </div>
+
+            )
+        }
 
     return(
         <>
-        
-            <div  data-testid="toggle" onClick={toggleImage} >
-            <img data-testid="galleryItem" src={galleryObject.url}/>
-            
+            <ToggleImage />    
             <p>{galleryObject.title}
-            <button data-testid="like" onClick={likeImage}>Like</button></p>
-            </div>
-        
+            <button data-testid="like" onClick={likeImage}>Like</button>{galleryObject.likes}</p>
         </>
         
     )
