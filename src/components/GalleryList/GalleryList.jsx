@@ -24,12 +24,13 @@ function CompileGalleryList() {
       })
     }
     return(
-        <>
+        <div  data-testid="galleryList">
+
         {gallery.map(galleryObject => (
             
-         <HandleGalleryItem key={galleryObject.id} galleryObject={galleryObject}/>))}
+         <HandleGalleryItem key={galleryObject.id} galleryObject={galleryObject} getGalleryItems={getGalleryItems}/>))}
          
-        </>
+        </div>
     )
 }
 

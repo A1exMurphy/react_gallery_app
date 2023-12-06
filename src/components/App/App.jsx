@@ -10,14 +10,14 @@ function App() {
 
       // console.log(gallery, "gallery state")
     return (
-      <div>
+      <div data-testid="app">
         <header>
           <h1>React Gallery</h1>
         </header>
 
         <p>The gallery goes here!</p>
         
-        <CompileGalleryList data-testid="galleryList"/>
+        <CompileGalleryList />
         
       </div>
     );

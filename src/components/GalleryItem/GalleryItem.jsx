@@ -1,8 +1,9 @@
 import { useState } from "react"
 import Axios from "axios"
+import CompileGalleryList from "../GalleryList/GalleryList"
 
 
-function HandleGalleryItem({galleryObject}) {
+function HandleGalleryItem({galleryObject, getGalleryItems}) {
 
 //function to update like count in database:
 //create state in order to render uptodate like count
@@ -17,6 +18,7 @@ function HandleGalleryItem({galleryObject}) {
     //PUT route to update like count
         Axios.put(`/gallery/like/${galleryObject.id}`)
         .then(response => {
+            getGalleryItems()
             // console.log("likes was updated", response)
         })
         .catch(error => {
@@ -36,18 +38,20 @@ function HandleGalleryItem({galleryObject}) {
         };
 //onClick runs function to change state to not its current boleen value
             return(
+                <div  data-testid="galleryItem">
                    <div  data-testid="toggle" onClick={changeDisplay} >
                     {imageDisplay ? (
                         <div>
-                         <img data-testid="galleryItem" src={galleryObject.url}/>
+                         <img src={galleryObject.url}/>
                          </div>
                     ):(
-                        <div>
+                        <div data-testid="description">
                           {galleryObject.description}
                         </div>
-                    )
+                   )
                     }
                    </div>
+                </div>
 
             )
         }
